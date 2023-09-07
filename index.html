@@ -1,47 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Moses Makaka's Github Docs</title>
+ <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <title>Moses Makaka's Github Docs</title>
+    <!-- Add links to your CSS and other external resources here -->
 
+    <!-- Color Palette -->
+    <style>
+        :root {
+            --primary-color: #3498db; /* Blue */
+            --secondary-color: #e74c3c; /* Red */
+            --background-color: #f2f2f2; /* Light Gray */
+            --text-color: #333; /* Dark Gray */
+        }
+    </style>
+
+    <!-- Your existing CSS -->
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
-
     <link rel="stylesheet" href="css/aos.css">
-
     <link rel="stylesheet" href="css/ionicons.min.css">
-    
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-  </head>
- <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Moses Makaka's Github Docs</title>
-    <!-- Link to your CSS and other external resources here -->
 
+    <!-- Mobile Navigation CSS -->
     <style>
-        /* Translucent header effect */
-        .navbar {
-            background-color: rgba(0, 0, 0, 0.7); /* Initial background color with opacity */
-            transition: background-color 0.3s ease-in-out;
+        /* Mobile Navigation Styles */
+        .mobile-nav {
+            display: none;
         }
 
-        .navbar.scrolled {
-            background-color: rgba(0, 0, 0, 1); /* Fully opaque background color when scrolled */
+        @media (max-width: 767px) {
+            .mobile-nav {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                z-index: 1000;
+                padding: 10px 0;
+            }
+
+            .mobile-nav a {
+                display: block;
+                color: #fff;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+            }
         }
     </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<!-- Mobile Navigation -->
+<div class="mobile-nav">
+    <a href="#home-section">Home</a>
+    <a href="#about-section">About</a>
+    <a href="#services-section">Services</a>
+    <a href="#projects-section">Projects</a>
+    <a href="#contact-section">Contact</a>
+</div>
 
 <!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
