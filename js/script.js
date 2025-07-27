@@ -75,4 +75,42 @@ document.addEventListener('DOMContentLoaded', () => {
   fadeElements.forEach(el => {
     fadeObserver.observe(el);
   });
+
+  /* -------------------------------------------------------------------------
+   * Theme toggle
+   *
+   * Allow visitors to switch between light and dark themes. We store the
+   * preference in localStorage so it persists across page loads. The
+   * initial theme is determined by the saved preference or the user’s
+   * operating system preference. The toggle button’s icon reflects the
+   * current mode: a moon for light mode (click to go dark) and a sun
+   * for dark mode (click to return to light). */
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let savedTheme = localStorage.getItem('theme');
+
+    const applyTheme = mode => {
+      if (mode === 'dark') {
+        document.body.classList.add('dark');
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark');
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    };
+
+    // Determine initial theme: saved preference or OS preference
+    if (!savedTheme) {
+      savedTheme = prefersDark ? 'dark' : 'light';
+    }
+    applyTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.body.classList.contains('dark');
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+  }
 });
