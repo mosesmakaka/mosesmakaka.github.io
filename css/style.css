@@ -200,6 +200,80 @@ nav.scrolled {
   height: 70px;
 }
 
+/* Theme toggle button
+ * A simple control that lets users switch between light and dark mode. It inherits
+ * the current nav colour so it remains subtle in both themes. The hover
+ * enlargement provides feedback without adding visual clutter. */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: inherit;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.15);
+}
+
+.theme-toggle:focus {
+  outline: none;
+}
+
+/* ============================================================================
+   Dark Mode Overrides
+   ----------------------------------------------------------------------------
+   When the user toggles dark mode, the `.dark` class is applied to the body.
+   These rules override colours and backgrounds to create a comfortable
+   low‑light experience while maintaining the Liquid Glass effect. The tinted
+   variants use slightly higher opacities to ensure legibility against the
+   darker backdrop. */
+body.dark {
+  color: #e5e5e7;
+  background: linear-gradient(135deg, #131314 0%, #050506 100%);
+}
+
+body.dark nav {
+  color: #ffffff;
+}
+
+body.dark nav.scrolled {
+  background: rgba(20, 20, 22, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+}
+
+body.dark .hero .overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+body.dark .glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .glass.tint-blue {
+  --glass-bg: rgba(10, 132, 255, 0.2);
+  --glass-border: rgba(10, 132, 255, 0.45);
+  --glass-shadow: rgba(10, 132, 255, 0.25);
+}
+
+body.dark .glass.tint-green {
+  --glass-bg: rgba(48, 209, 88, 0.2);
+  --glass-border: rgba(48, 209, 88, 0.45);
+  --glass-shadow: rgba(48, 209, 88, 0.25);
+}
+
+/* Dark mode contact fields maintain readability */
+body.dark .contact-info,
+body.dark .contact-form {
+  color: #e5e5e7;
+}
+
 .brand {
   font-size: 1.5rem;
   font-weight: 700;
