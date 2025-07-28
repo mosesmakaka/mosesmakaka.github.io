@@ -85,29 +85,44 @@ document.addEventListener('DOMContentLoaded', () => {
    * operating system preference. The toggle button’s icon reflects the
    * current mode: a moon for light mode (click to go dark) and a sun
    * for dark mode (click to return to light). */
+  // Handle theme toggling between light and dark modes. We look for a
+  // button with id "theme-toggle". When present, we initialise the
+  // current theme based on either a saved preference in localStorage or
+  // the user’s OS preference. Clicking the button toggles the
+  // ``dark`` class on the body and swaps the icon between a moon
+  // (🌙) for light mode and a sun (☀️) for dark mode. See
+  // ``css/style.css`` for dark mode overrides.
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     let savedTheme = localStorage.getItem('theme');
 
-    const applyTheme = mode => {
+    /**
+     * Apply the given theme to the document.
+     *
+     * @param {('light'|'dark')} mode The theme to apply.
+     */
+    const applyTheme = (mode) => {
       if (mode === 'dark') {
         document.body.classList.add('dark');
-        themeToggle.textContent = '☀️';
+        // Set a sun icon to indicate clicking will return to light mode
+        themeToggle.innerText = '☀️';
         localStorage.setItem('theme', 'dark');
       } else {
         document.body.classList.remove('dark');
-        themeToggle.textContent = '🌙';
+        // Set a moon icon to indicate clicking will enable dark mode
+        themeToggle.innerText = '🌙';
         localStorage.setItem('theme', 'light');
       }
     };
 
-    // Determine initial theme: saved preference or OS preference
+    // If no saved theme, default to the OS preference (dark or light)
     if (!savedTheme) {
       savedTheme = prefersDark ? 'dark' : 'light';
     }
     applyTheme(savedTheme);
 
+    // Toggle between modes on button click
     themeToggle.addEventListener('click', () => {
       const isDark = document.body.classList.contains('dark');
       applyTheme(isDark ? 'light' : 'dark');
