@@ -652,6 +652,22 @@ footer {
     margin-left: 0;
     font-size: 1rem;
   }
+
+  /* Ensure the theme toggle sits comfortably within the nav on small
+   * screens. By default it stays to the right of the brand, but we
+   * explicitly assign margin and increase z-index so it doesn’t clash
+   * with the hamburger icon. */
+  .theme-toggle {
+    margin-left: auto;
+    margin-right: 10px;
+    z-index: 1001;
+  }
+
+  /* In dark mode, the mobile drop‑down menu should be dark to
+   * maintain contrast against the background. */
+  body.dark .menu {
+    background: rgba(20, 20, 22, 0.95);
+  }
 }
 
 @media (max-width: 576px) {
